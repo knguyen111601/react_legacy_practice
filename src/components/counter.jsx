@@ -3,8 +3,14 @@ import React, { Component } from 'react'
 class Counter extends Component {
     state = {
         count: 0,
-        tags: []
+        tags: ['tag1', 'tag2', 'tag3']
     }
+
+    // constructor() {
+    //     super()
+    //     // allows handleIncrement to access this (current obj)
+    //     this.handleIncrement = this.handleIncrement.bind(this) 
+    // }
 
     render() {
         // React.createElement()
@@ -13,13 +19,24 @@ class Counter extends Component {
             // <>same as these</> 
             <React.Fragment>
                 <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-                <button className="btn btn-secondary btn-sm">Increment</button>
+                <button 
+                    onClick={ ()=> this.handleIncrement({id: 1}) } 
+                    className="btn btn-secondary btn-sm"
+                >
+                    Increment
+                </button>
 
-                { this.state.tags.length === 0 && "Please create a new tag"}
+                {/* { this.state.tags.length === 0 && "Please create a new tag"} */}
                 {this.renderTags()}
 
             </React.Fragment>
         )
+    }
+
+    // allows access to "this" current object
+    handleIncrement = (product) => {
+        console.log(product)
+        this.setState({count: this.state.count + 1})
     }
 
     renderTags() {
