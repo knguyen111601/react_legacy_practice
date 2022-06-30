@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 class Counter extends Component {
     state = {
-        count: 0,
+        count: this.props.start,
         tags: ['tag1', 'tag2', 'tag3']
     }
 
@@ -27,7 +27,7 @@ class Counter extends Component {
                 </button>
 
                 {/* { this.state.tags.length === 0 && "Please create a new tag"} */}
-                {this.renderTags()}
+                {/* {this.renderTags()} */}
 
             </React.Fragment>
         )
@@ -35,7 +35,6 @@ class Counter extends Component {
 
     // allows access to "this" current object
     handleIncrement = (product) => {
-        console.log(product)
         this.setState({count: this.state.count + 1})
     }
 
